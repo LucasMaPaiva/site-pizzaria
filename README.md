@@ -90,5 +90,5 @@ Acompanhe as novidades e promoções:
 ---
 
 <div align="center">
-  <sub>Feito com ❤️ por Lucas Paiva</sub>
+  <sub>Feito por Lucas Paiva</sub>
 </div>

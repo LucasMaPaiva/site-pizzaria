@@ -5,24 +5,22 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { 
-  Pizza, 
-  Coffee, 
-  IceCream, 
-  Croissant, 
-  MapPin, 
-  Phone, 
-  Instagram, 
-  Facebook, 
-  ChevronRight, 
+import {
+  Pizza,
+  Coffee,
+  IceCream,
+  Croissant,
+  MapPin,
+  Phone,
+  Instagram,
+  Facebook,
+  ChevronRight,
   ChevronLeft,
-  Menu as MenuIcon, 
+  Menu as MenuIcon,
   X,
   ExternalLink,
   Clock,
-  Navigation,
-  Send,
-  MessageCircle
+  Navigation
 } from 'lucide-react';
 
 /// --- Types ---
@@ -172,7 +170,7 @@ const Navbar = () => {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: '100%' }}
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: '100%' }}
@@ -200,9 +198,9 @@ const Hero = () => {
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with Parallax-like feel */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop" 
-          alt="Pizza Background" 
+        <img
+          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop"
+          alt="Pizza Background"
           className="w-full h-full object-cover scale-105"
         />
         <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
@@ -224,17 +222,17 @@ const Hero = () => {
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
             Sabores artesanais, café especial, gelatos italianos e momentos únicos em um ambiente feito para você.
           </p>
-          
+
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a 
-              href="#categorias" 
+            <a
+              href="#categorias"
               className="w-full sm:w-auto bg-primary text-white px-10 py-4 rounded-full font-bold text-lg hover:bg-primary/90 transition-all flex items-center justify-center gap-2 group shadow-2xl shadow-primary/30"
             >
               Ver Cardápio
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
-            <a 
-              href="#unidades" 
+            <a
+              href="#unidades"
               className="w-full sm:w-auto bg-white/10 backdrop-blur-md text-white border border-white/20 px-10 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all"
             >
               Escolher Unidade
@@ -244,7 +242,7 @@ const Hero = () => {
       </div>
 
       {/* Scroll Indicator */}
-      <motion.div 
+      <motion.div
         animate={{ y: [0, 10, 0] }}
         transition={{ duration: 2, repeat: Infinity }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50"
@@ -262,16 +260,16 @@ const About = () => {
     <section id="sobre" className="py-24 bg-base overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid md:grid-cols-2 gap-16 items-center">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="relative"
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
-              <img 
-                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop" 
-                alt="Ambiente Dois90" 
+              <img
+                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop"
+                alt="Ambiente Dois90"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -294,7 +292,7 @@ const About = () => {
             <p className="text-lg text-ink/70 mb-8 leading-relaxed">
               A Dois90 nasceu do desejo de criar um espaço onde cada detalhe importa. Começamos com a pizza perfeita, mas descobrimos que a vida é feita de muitos outros sabores.
             </p>
-            
+
             <div className="grid grid-cols-2 gap-8">
               <div className="flex flex-col gap-3">
                 <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center text-primary">
@@ -344,13 +342,13 @@ const Categories = () => {
               transition={{ delay: idx * 0.1 }}
               className="group relative h-[450px] rounded-3xl overflow-hidden cursor-pointer"
             >
-              <img 
-                src={cat.image} 
-                alt={cat.title} 
+              <img
+                src={cat.image}
+                alt={cat.title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-              
+
               <div className="absolute inset-0 p-8 flex flex-col justify-end">
                 <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-2xl flex items-center justify-center text-white mb-4 group-hover:bg-primary transition-colors">
                   {cat.icon}
@@ -377,11 +375,16 @@ const Units = () => {
 
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setItemsPerPage(1);
-      } else {
-        setItemsPerPage(2);
+      const width = window.innerWidth;
+      let newItemsPerPage = 1;
+      if (width >= 768) {
+        newItemsPerPage = 2;
       }
+      setItemsPerPage(newItemsPerPage);
+
+      // Adjust currentIndex if it's out of bounds after resize
+      const newTotalPages = Math.ceil(UNITS.length / newItemsPerPage);
+      setCurrentIndex((prev) => Math.min(prev, Math.max(0, newTotalPages - 1)));
     };
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -407,31 +410,33 @@ const Units = () => {
             <h2 className="text-4xl md:text-5xl font-display font-bold">Nossas Unidades</h2>
           </div>
           <div className="flex items-center gap-4">
-            <button 
+            <button
               onClick={prev}
-              className="w-12 h-12 rounded-full border border-ink/10 flex items-center justify-center hover:bg-ink hover:text-white transition-all"
+              aria-label="Anterior"
+              className="w-12 h-12 rounded-full border border-ink/10 flex items-center justify-center hover:bg-ink hover:text-white transition-all active:scale-95"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
-            <button 
+            <button
               onClick={next}
-              className="w-12 h-12 rounded-full border border-ink/10 flex items-center justify-center hover:bg-ink hover:text-white transition-all"
+              aria-label="Próximo"
+              className="w-12 h-12 rounded-full border border-ink/10 flex items-center justify-center hover:bg-ink hover:text-white transition-all active:scale-95"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
           </div>
         </div>
 
-        <div className="relative">
-          <motion.div 
+        <div className="relative overflow-visible">
+          <motion.div
             className="flex gap-8"
-            animate={{ x: `-${currentIndex * 100}%` }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+            animate={{ x: `calc(-${currentIndex} * (100% + 2rem))` }}
+            transition={{ type: "spring", stiffness: 200, damping: 25 }}
           >
             {UNITS.map((unit) => (
-              <motion.div 
+              <motion.div
                 key={unit.id}
-                className="min-w-full md:min-w-[calc(50%-1rem)] shrink-0"
+                className="w-full md:w-[calc(50%-1rem)] shrink-0"
               >
                 <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-ink/5 border border-ink/5 h-full flex flex-col">
                   <div className="h-64 relative">
@@ -440,43 +445,43 @@ const Units = () => {
                       <Clock className="w-4 h-4 text-primary" /> Aberto até as 23h
                     </div>
                   </div>
-                  <div className="p-10 flex-grow flex flex-col">
-                    <h3 className="text-2xl font-display font-bold mb-4">{unit.name}</h3>
+                  <div className="p-8 md:p-10 flex-grow flex flex-col">
+                    <h3 className="text-xl md:text-2xl font-display font-bold mb-4">{unit.name}</h3>
                     <div className="flex flex-col gap-3 mb-8 flex-grow">
                       <div className="flex items-start gap-3 text-ink/60">
                         <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
-                        <p>{unit.address}</p>
+                        <p className="text-sm md:text-base">{unit.address}</p>
                       </div>
                       {unit.phone && (
                         <div className="flex items-center gap-3 text-ink/60">
                           <Phone className="w-5 h-5 text-primary shrink-0" />
-                          <p>Central: {unit.phone}</p>
+                          <p className="text-sm md:text-base">Central: {unit.phone}</p>
                         </div>
                       )}
                       {unit.whatsapp && (
                         <div className="flex items-center gap-3 text-ink/60">
-                          <div className="w-5 h-5 flex items-center justify-center bg-green-500 rounded-full text-white">
+                          <div className="w-5 h-5 flex items-center justify-center bg-green-500 rounded-full text-white shrink-0">
                             <Phone className="w-3 h-3" />
                           </div>
-                          <p>WhatsApp: {unit.whatsapp}</p>
+                          <p className="text-sm md:text-base">WhatsApp: {unit.whatsapp}</p>
                         </div>
                       )}
                     </div>
-                    
-                    <div className="grid grid-cols-2 gap-4">
-                      <a 
-                        href={unit.menuUrl} 
-                        target="_blank" 
+
+                    <div className="grid grid-cols-2 gap-3 md:gap-4">
+                      <a
+                        href={unit.menuUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-primary text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-primary/90 transition-all"
+                        className="bg-primary text-white py-3 md:py-4 rounded-2xl font-bold text-sm md:text-base flex items-center justify-center gap-2 hover:bg-primary/90 transition-all active:scale-95"
                       >
                         Cardápio <ExternalLink className="w-4 h-4" />
                       </a>
-                      <a 
-                        href={unit.mapsUrl} 
-                        target="_blank" 
+                      <a
+                        href={unit.mapsUrl}
+                        target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-ink text-white py-4 rounded-2xl font-bold flex items-center justify-center gap-2 hover:bg-ink/90 transition-all"
+                        className="bg-ink text-white py-3 md:py-4 rounded-2xl font-bold text-sm md:text-base flex items-center justify-center gap-2 hover:bg-ink/90 transition-all active:scale-95"
                       >
                         Como chegar <Navigation className="w-4 h-4" />
                       </a>
@@ -486,6 +491,19 @@ const Units = () => {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+
+        {/* Page Indicators */}
+        <div className="flex justify-center gap-2 mt-12">
+          {Array.from({ length: totalPages }).map((_, i) => (
+            <button
+              key={i}
+              onClick={() => setCurrentIndex(i)}
+              className={`h-2 rounded-full transition-all duration-300 ${currentIndex === i ? 'w-8 bg-primary' : 'w-2 bg-ink/10'
+                }`}
+              aria-label={`Ir para página ${i + 1}`}
+            />
+          ))}
         </div>
       </div>
     </section>
@@ -501,7 +519,7 @@ const Gallery = () => {
           @dois90_oficial <Instagram className="w-5 h-5" />
         </a>
       </div>
-      
+
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 px-4">
         {GALLERY.map((img, idx) => (
           <motion.div
@@ -530,7 +548,7 @@ const Contact = () => {
             <div>
               <h2 className="text-4xl md:text-6xl font-display font-bold mb-6">Peça agora ou venha nos visitar.</h2>
               <p className="text-white/80 text-lg mb-10">Estamos prontos para tornar o seu dia mais saboroso. Escolha o seu canal favorito.</p>
-              
+
               <div className="flex flex-col gap-6">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
@@ -585,7 +603,7 @@ const Footer = () => {
               Uma experiência gastronômica completa. Da pizza artesanal ao café especial, celebramos os bons momentos da vida com sabor e qualidade.
             </p>
           </div>
-          
+
           <div>
             <h4 className="font-bold mb-6 uppercase tracking-widest text-sm text-primary">Links Rápidos</h4>
             <ul className="flex flex-col gap-4 text-white/60">
@@ -621,87 +639,6 @@ const Footer = () => {
   );
 };
 
-const WhatsAppChat = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [message, setMessage] = useState('');
-
-  const handleSend = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!message.trim()) return;
-    
-    const phoneNumber = '5595991520290';
-    const encodedMessage = encodeURIComponent(message);
-    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
-    setMessage('');
-    setIsOpen(false);
-  };
-
-  return (
-    <div className="fixed bottom-8 right-8 z-[100]">
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className="absolute bottom-20 right-0 w-[320px] bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-ink/5"
-          >
-            {/* Header */}
-            <div className="bg-[#25D366] p-6 text-white">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
-                  <MessageCircle className="w-6 h-6" />
-                </div>
-                <div>
-                  <h4 className="font-bold leading-tight">Dois90 Atendimento</h4>
-                  <p className="text-xs text-white/80">Normalmente responde em minutos</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Body */}
-            <div className="p-6 bg-[#E5DDD5] min-h-[150px] relative">
-              <div className="bg-white p-3 rounded-2xl rounded-tl-none text-sm shadow-sm max-w-[80%]">
-                Olá! Como podemos ajudar você hoje? 🍕☕🍦
-              </div>
-            </div>
-
-            {/* Footer */}
-            <div className="p-4 bg-white">
-              <form onSubmit={handleSend} className="flex gap-2">
-                <input
-                  type="text"
-                  value={message}
-                  onChange={(e) => setMessage(e.target.value)}
-                  placeholder="Digite sua mensagem..."
-                  className="flex-grow px-4 py-3 bg-base rounded-full text-sm border-none focus:ring-2 focus:ring-[#25D366] transition-all"
-                />
-                <button
-                  type="submit"
-                  className="w-11 h-11 bg-[#25D366] text-white rounded-full flex items-center justify-center hover:scale-105 transition-all shadow-lg"
-                >
-                  <Send className="w-5 h-5" />
-                </button>
-              </form>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
-      <motion.button
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        onClick={() => setIsOpen(!isOpen)}
-        className={`w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all ${
-          isOpen ? 'bg-ink text-white' : 'bg-[#25D366] text-white'
-        }`}
-      >
-        {isOpen ? <X className="w-8 h-8" /> : <MessageCircle className="w-8 h-8" />}
-      </motion.button>
-    </div>
-  );
-};
-
 export default function App() {
   return (
     <div className="min-h-screen">
@@ -713,7 +650,6 @@ export default function App() {
       <Gallery />
       <Contact />
       <Footer />
-      <WhatsAppChat />
     </div>
   );
 }

@@ -5,11 +5,15 @@
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Space Grotesk", sans-serif;
   --font-serif: "Playfair Display", serif;
-  
-  --color-primary: #D94126; /* Warm Pizza Red */
-  --color-secondary: #8C5E45; /* Coffee Brown */
-  --color-accent: #F2A950; /* Gelato Orange */
-  --color-base: #FDFBF7; /* Off-white/Beige base */
+
+  --color-primary: #D94126;
+  /* Warm Pizza Red */
+  --color-secondary: #8C5E45;
+  /* Coffee Brown */
+  --color-accent: #F2A950;
+  /* Gelato Orange */
+  --color-base: #FDFBF7;
+  /* Off-white/Beige base */
   --color-ink: #1A1A1A;
 }
 
