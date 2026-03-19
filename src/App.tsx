@@ -20,7 +20,9 @@ import {
   X,
   ExternalLink,
   Clock,
-  Navigation
+  Navigation,
+  Send,
+  MessageCircle
 } from 'lucide-react';
 
 /// --- Types ---
@@ -619,6 +621,87 @@ const Footer = () => {
   );
 };
 
+const WhatsAppChat = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState('');
+
+  const handleSend = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!message.trim()) return;
+    
+    const phoneNumber = '5595991520290';
+    const encodedMessage = encodeURIComponent(message);
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+    setMessage('');
+    setIsOpen(false);
+  };
+
+  return (
+    <div className="fixed bottom-8 right-8 z-[100]">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 20 }}
+            className="absolute bottom-20 right-0 w-[320px] bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-ink/5"
+          >
+            {/* Header */}
+            <div className="bg-[#25D366] p-6 text-white">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center">
+                  <MessageCircle className="w-6 h-6" />
+                </div>
+                <div>
+                  <h4 className="font-bold leading-tight">Dois90 Atendimento</h4>
+                  <p className="text-xs text-white/80">Normalmente responde em minutos</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Body */}
+            <div className="p-6 bg-[#E5DDD5] min-h-[150px] relative">
+              <div className="bg-white p-3 rounded-2xl rounded-tl-none text-sm shadow-sm max-w-[80%]">
+                Olá! Como podemos ajudar você hoje? 🍕☕🍦
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="p-4 bg-white">
+              <form onSubmit={handleSend} className="flex gap-2">
+                <input
+                  type="text"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Digite sua mensagem..."
+                  className="flex-grow px-4 py-3 bg-base rounded-full text-sm border-none focus:ring-2 focus:ring-[#25D366] transition-all"
+                />
+                <button
+                  type="submit"
+                  className="w-11 h-11 bg-[#25D366] text-white rounded-full flex items-center justify-center hover:scale-105 transition-all shadow-lg"
+                >
+                  <Send className="w-5 h-5" />
+                </button>
+              </form>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <motion.button
+        whileHover={{ scale: 1.05 }}
+        whileTap={{ scale: 0.95 }}
+        onClick={() => setIsOpen(!isOpen)}
+        className={`w-16 h-16 rounded-full flex items-center justify-center shadow-2xl transition-all ${
+          isOpen ? 'bg-ink text-white' : 'bg-[#25D366] text-white'
+        }`}
+      >
+        {isOpen ? <X className="w-8 h-8" /> : <MessageCircle className="w-8 h-8" />}
+      </motion.button>
+    </div>
+  );
+};
+
 export default function App() {
   return (
     <div className="min-h-screen">
@@ -630,6 +713,7 @@ export default function App() {
       <Gallery />
       <Contact />
       <Footer />
+      <WhatsAppChat />
     </div>
   );
 }
