@@ -1,0 +1,7 @@
+{
+  "name": "Dois90 - Pizzaria & Experiência",
+  "description": "Landing page moderna e premium para a Dois90: pizzaria artesanal, cafeteria, gelateria e padaria.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
