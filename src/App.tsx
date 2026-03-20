@@ -22,7 +22,8 @@ import {
   Clock,
   Navigation,
   Send,
-  MessageCircle
+  MessageCircle,
+  Camera
 } from 'lucide-react';
 
 /// --- Types ---
@@ -52,28 +53,28 @@ const CATEGORIES: Category[] = [
     id: 'pizza',
     title: 'Pizzaria',
     icon: <Pizza className="w-6 h-6" />,
-    image: '/secao-2/pizza.jpeg',
+    image: '/public/secao-2/pizza.jpeg',
     description: 'Massas de fermentação natural e ingredientes selecionados.'
   },
   {
     id: 'coffee',
     title: 'Cafeteria',
     icon: <Coffee className="w-6 h-6" />,
-    image: '/secao-2/doce.png',
+    image: '/public/secao-2/doce.png',
     description: 'Grãos especiais, métodos artesanais e acompanhamentos únicos.'
   },
   {
     id: 'gelato',
     title: 'Gelateria',
     icon: <IceCream className="w-6 h-6" />,
-    image: '/secao-2/gelato.jpeg',
+    image: '/public/secao-2/gelato.jpeg',
     description: 'Gelatos italianos feitos diariamente com frutas frescas.'
   },
   {
     id: 'bakery',
     title: 'Salgados & Padaria',
     icon: <Croissant className="w-6 h-6" />,
-    image: '/secao-2/salgados.jpeg',
+    image: '/public/secao-2/salgados.jpeg',
     description: 'Pães artesanais, croissants e salgados assados na hora.'
   }
 ];
@@ -83,7 +84,7 @@ const UNITS: Unit[] = [
     id: 'pizzaria-aeroporto',
     name: 'Pizzaria Dois90 Aeroporto',
     address: 'R. Yeyê Coelho, 580A - Aeroporto, Boa Vista - RR, 69310-118',
-    image: '/unidades/aeroporto-pizzaria.jpeg',
+    image: '/public/unidades/aeroporto-pizzaria.jpeg',
     mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR',
     menuUrl: 'https://pedido.anota.ai/',
     phone: '(95) 3621-8600',
@@ -94,7 +95,7 @@ const UNITS: Unit[] = [
     id: 'pizzaria-cacari',
     name: 'Pizzaria Dois90 Caçari',
     address: 'Av. Ville Roy, 2155 - Terreo - Caçari, Boa Vista - RR, 69307-725',
-    image: '/unidades/cacari.jpeg',
+    image: '/public/unidades/cacari.jpeg',
     mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//Dois90%2BPizzaria%2BCa%25C3%25A7ari%2B-%2BAv.%2BVille%2BRoy,%2B2155%2B-%2BTerreo%2B-%2BCa%25C3%25A7ari,%2BBoa%2BVista%2B-%2BRR,%2B69307-725/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d930899c9b5cac5:0xf9103c15ad8a4b12%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIKBAL&usg=AOvVaw1O_qnLqrqPclp07II2W8UB',
     menuUrl: 'https://pigz.com.br/dois90pizzaria',
     phone: '(95) 3621-8600',
@@ -105,7 +106,7 @@ const UNITS: Unit[] = [
     id: 'gelateria-aeroporto',
     name: 'Gelateria Dois90 Aeroporto',
     address: 'R. Yeyê Coelho, 580A - Aeroporto, Boa Vista - RR, 69310-118',
-    image: '/unidades/aeroporto-gelateria.jpeg',
+    image: '/public/unidades/aeroporto-gelateria.jpeg',
     mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR',
     menuUrl: 'https://pedido.anota.ai/',
     whatsapp: '(95) 99150-0290',
@@ -115,7 +116,7 @@ const UNITS: Unit[] = [
     id: 'gelateria-aparecida',
     name: 'Gelateria Dois90 Aparecida',
     address: 'Gelatos dois90, R. José Bonifácio, 504 - Aparecida, Boa Vista - RR, 69306-275',
-    image: '/unidades/aparecida.jpeg',
+    image: '/public/unidades/aparecida.jpeg',
     mapsUrl: 'https://www.google.com/maps?client=firefox-b-d&lei=Q5-8abSzFYeTwbkPqZewiA0&cs=0&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KcU6ImccBpONMZNxyDUymG74&daddr=R.+Jos%C3%A9+Bonif%C3%A1cio,+504+-+Aparecida,+Boa+Vista+-+RR,+69306-275',
     menuUrl: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d',
     whatsapp: '(95) 98112-6473',
@@ -147,9 +148,9 @@ const Navbar = () => {
   return (
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
-        <div className="flex items-center gap-2">
+        <a href="#" className="flex items-center gap-2">
           <img src="/logo.svg" alt="Dois90" className="h-10 w-auto" />
-        </div>
+        </a>
 
         {/* Desktop Menu */}
         <div className={`hidden md:flex items-center gap-8 font-medium text-sm uppercase tracking-widest ${isScrolled ? 'text-ink' : 'text-white'}`}>
@@ -214,7 +215,7 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block px-4 py-1 rounded-full border border-white/30 text-xs font-bold uppercase tracking-[0.3em] mb-6 backdrop-blur-sm">
-            Desde 1998 • Tradição & Sabor
+            Desde 2000 • Tradição & Sabor
           </span>
           <h1 className="text-5xl md:text-8xl font-display font-bold mb-6 leading-[1.1] text-balance flex flex-col items-center gap-4">
             <img src="/logo.svg" alt="Dois90" className="h-24 md:h-40 w-auto" />
@@ -311,12 +312,12 @@ const About = () => {
               </div>
             </div>
 
-            <button className="mt-12 group flex items-center gap-3 font-bold text-ink hover:text-primary transition-colors">
+            <a href="#historia" className="mt-12 group inline-flex items-center gap-3 font-bold text-ink hover:text-primary transition-colors">
               Conheça nossa história
               <div className="w-10 h-10 rounded-full border border-ink/10 flex items-center justify-center group-hover:border-primary group-hover:bg-primary group-hover:text-white transition-all">
                 <ChevronRight className="w-5 h-5" />
               </div>
-            </button>
+            </a>
           </motion.div>
         </div>
       </div>
@@ -777,8 +778,8 @@ const WhatsAppWidget = () => {
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className={`rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 overflow-hidden ${
-            isOpen ? 'w-16 h-16 bg-ink text-white rotate-90' : 'w-24 h-24 bg-transparent'
+          className={`rounded-full flex items-center justify-center transition-all duration-500 ${
+            isOpen ? 'w-16 h-16 bg-ink text-white rotate-90 shadow-2xl' : 'w-24 h-24 bg-transparent'
           }`}
         >
           {isOpen ? <X className="w-8 h-8" /> : (
@@ -786,7 +787,7 @@ const WhatsAppWidget = () => {
               <img
                 src="/milla.png"
                 alt="Mila"
-                className="w-full h-full object-cover rounded-full"
+                className="w-full h-full object-cover drop-shadow-[0_15px_15px_rgba(0,0,0,0.4)]"
               />
               <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-[#25D366] rounded-full animate-pulse"></span>
             </div>
@@ -797,7 +798,113 @@ const WhatsAppWidget = () => {
   );
 };
 
+const StoryPage = () => {
+  return (
+    <div className="pt-32 pb-24 bg-ink min-h-screen">
+      <div className="max-w-4xl mx-auto px-6">
+        <a href="#" className="inline-flex items-center gap-2 text-white/50 hover:text-primary transition-colors font-bold uppercase tracking-widest text-xs mb-12">
+          <ChevronLeft className="w-4 h-4" /> Voltar para o início
+        </a>
+
+        <h1 className="text-5xl md:text-7xl font-display font-bold mb-12 text-white">De onde viemos.</h1>
+
+        <div className="prose prose-lg max-w-none text-white/80 font-sans leading-relaxed mb-16 space-y-6">
+          <p className="text-2xl font-display font-bold text-white mb-8 leading-snug">
+            Quem sou... Eu sou de Roraima, sou do dia 12 de junho de 2000, sou de Boa Vista, sou a Pizzaria Dois90.
+          </p>
+          <p>
+            Um nome singular para uma pizzaria, mas com certeza um nome bem contextualizado com a história de Roraima, pois 2-90 foi a placa do primeiro automóvel táxi de Boa Vista que não era um Jeep.
+          </p>
+          <p>
+            Em 1966, o Aero Willys azul, com sua placa 2-90, tornou-se um sucesso. Muitas pessoas queriam aproveitar a novidade e dar uma volta pela cidade.
+          </p>
+          <p>
+            Assim, também foi criado o primeiro ponto de táxi de Boa Vista, localizado na esquina onde hoje são as avenidas Getúlio Vargas e Sílvio Botelho, no centro. O ponto recebeu do então governador Hélio Campos a concessão de uma linha telefônica com o mesmo número: 2-90.
+          </p>
+        </div>
+
+        {/* Car Image Header */}
+        <div className="w-full rounded-3xl overflow-hidden shadow-2xl mb-24 relative border border-white/10 bg-white/5 backdrop-blur-sm p-4 md:p-12 flex justify-center">
+          <img src="/carro.png" alt="Aero Willys 2-90 - 1966" className="w-full h-auto max-h-[600px] object-contain relative z-0" />
+        </div>
+
+        {/* Missão e Valores */}
+        <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12">
+          {/* Missão */}
+          <div className="bg-white/5 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/10 hover:border-primary/40 transition-colors flex flex-col">
+            <h3 className="text-2xl font-display font-bold mb-4 text-primary">Nossa Missão</h3>
+            <p className="text-white/70 leading-relaxed text-sm">
+              Trabalhar em equipe para transformar a vontade de comer em uma experiência agradável, sendo diferenciado pela qualidade, atendimento, inovação e produtividade.
+            </p>
+          </div>
+          
+          {/* Visão */}
+          <div className="bg-white/5 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/10 hover:border-white/40 transition-colors flex flex-col">
+            <h3 className="text-2xl font-display font-bold mb-4 text-white">Nossa Visão</h3>
+            <p className="text-white/70 leading-relaxed text-sm">
+              Ser referência em oferecer produtos que busquem atender a necessidade do público em alimentação dentro e fora de casa.
+            </p>
+          </div>
+
+          {/* Valores */}
+          <div className="bg-white/5 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/10 hover:border-accent/40 transition-colors flex flex-col">
+            <h3 className="text-2xl font-display font-bold mb-4 text-accent">Nossos Valores</h3>
+            <ul className="flex flex-col gap-4 text-white/80 text-sm">
+              <li>
+                <div className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0"></span>
+                  <div>
+                    <strong className="text-white">Respeito:</strong> <span className="text-white/70">Valorize o que torna cada pessoa única.</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0"></span>
+                  <div>
+                    <strong className="text-white">Colaboração:</strong> <span className="text-white/70">Juntos somos mais fortes.</span>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div className="flex items-start gap-2">
+                  <span className="w-1.5 h-1.5 rounded-full bg-accent mt-1.5 shrink-0"></span>
+                  <div>
+                    <strong className="text-white">Empatia:</strong> <span className="text-white/70">Tente se colocar no lugar do outro.</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 export default function App() {
+  const [hash, setHash] = useState(window.location.hash);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      setHash(window.location.hash);
+      window.scrollTo(0, 0);
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  if (hash === '#historia') {
+    return (
+      <div className="min-h-screen font-sans">
+        <Navbar />
+        <StoryPage />
+        <Footer />
+        <WhatsAppWidget />
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
       <Navbar />
