@@ -25,7 +25,7 @@ export const Hero = () => {
           </span>
           <h1 className="text-5xl md:text-8xl font-display mb-6 leading-[1.1] text-balance flex flex-col items-center gap-4">
             <img src="/logo.svg" alt="Dois90" className="h-24 md:h-40 w-auto" />
-            <span className="text-white font-authentic font-normal flex flex-col md:flex-row items-center md:items-baseline gap-2">
+            <span className="text-white font-serif italic font-normal flex flex-col md:flex-row items-center md:items-baseline gap-2">
               <span className="text-7xl md:text-7xl">25</span>
               <span className="text-7xl md:text-7xl">anos com você.</span>
             </span>
