@@ -33,6 +33,7 @@ interface Category {
   icon: React.ReactNode;
   image: string;
   description: string;
+  url: string;
 }
 
 interface Unit {
@@ -53,29 +54,33 @@ const CATEGORIES: Category[] = [
     id: 'pizza',
     title: 'Pizzaria',
     icon: <Pizza className="w-6 h-6" />,
-    image: '/public/secao-2/pizza.jpeg',
-    description: 'Massas de fermentação natural e ingredientes selecionados.'
+    image: '/secao-2/pizza.jpeg',
+    description: 'Massas de fermentação natural e ingredientes selecionados.',
+    url: 'https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa' // Altere este link para onde desejar (ex: link do cardápio)
   },
   {
     id: 'coffee',
     title: 'Cafeteria',
     icon: <Coffee className="w-6 h-6" />,
-    image: '/public/secao-2/doce.png',
-    description: 'Grãos especiais, métodos artesanais e acompanhamentos únicos.'
+    image: '/secao-2/doce.png',
+    description: 'Grãos especiais, métodos artesanais e acompanhamentos únicos.',
+    url: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d' // Altere este link para onde desejar
   },
   {
     id: 'gelato',
     title: 'Gelateria',
     icon: <IceCream className="w-6 h-6" />,
-    image: '/public/secao-2/gelato.jpeg',
-    description: 'Gelatos italianos feitos diariamente com frutas frescas.'
+    image: '/secao-2/gelato.jpeg',
+    description: 'Gelatos italianos feitos diariamente com frutas frescas.',
+    url: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d' // Altere este link para onde desejar
   },
   {
     id: 'bakery',
     title: 'Salgados & Padaria',
     icon: <Croissant className="w-6 h-6" />,
-    image: '/public/secao-2/salgados.jpeg',
-    description: 'Pães artesanais, croissants e salgados assados na hora.'
+    image: '/secao-2/salgados.jpeg',
+    description: 'Pães artesanais, croissants e salgados assados na hora.',
+    url: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d' // Altere este link para onde desejar
   }
 ];
 
@@ -86,7 +91,7 @@ const UNITS: Unit[] = [
     address: 'R. Yeyê Coelho, 580A - Aeroporto, Boa Vista - RR, 69310-118',
     image: '/public/unidades/aeroporto-pizzaria.jpeg',
     mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR',
-    menuUrl: 'https://pedido.anota.ai/',
+    menuUrl: 'https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa',
     phone: '(95) 3621-8600',
     whatsapp: '(95) 9152-0290',
     type: 'pizzaria'
@@ -108,7 +113,7 @@ const UNITS: Unit[] = [
     address: 'R. Yeyê Coelho, 580A - Aeroporto, Boa Vista - RR, 69310-118',
     image: '/public/unidades/aeroporto-gelateria.jpeg',
     mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR',
-    menuUrl: 'https://pedido.anota.ai/',
+    menuUrl: 'https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa',
     whatsapp: '(95) 99150-0290',
     type: 'gelateria'
   },
@@ -336,13 +341,14 @@ const Categories = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {CATEGORIES.map((cat, idx) => (
-            <motion.div
+            <motion.a
+              href={cat.url}
               key={cat.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: idx * 0.1 }}
-              className="group relative h-[450px] rounded-3xl overflow-hidden cursor-pointer"
+              className="group relative h-[450px] rounded-3xl overflow-hidden cursor-pointer block"
             >
               <img
                 src={cat.image}
@@ -359,11 +365,11 @@ const Categories = () => {
                 <p className="text-white/70 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                   {cat.description}
                 </p>
-                <button className="bg-white text-ink py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+                <div className="bg-white text-ink py-3 rounded-xl font-bold text-sm flex items-center justify-center gap-2 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                   Ver Cardápio <ExternalLink className="w-4 h-4" />
-                </button>
+                </div>
               </div>
-            </motion.div>
+            </motion.a>
           ))}
         </div>
       </div>
@@ -778,9 +784,8 @@ const WhatsAppWidget = () => {
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className={`rounded-full flex items-center justify-center transition-all duration-500 ${
-            isOpen ? 'w-16 h-16 bg-ink text-white rotate-90 shadow-2xl' : 'w-24 h-24 bg-transparent'
-          }`}
+          className={`rounded-full flex items-center justify-center transition-all duration-500 ${isOpen ? 'w-16 h-16 bg-ink text-white rotate-90 shadow-2xl' : 'w-24 h-24 bg-transparent'
+            }`}
         >
           {isOpen ? <X className="w-8 h-8" /> : (
             <div className="relative w-full h-full">
@@ -837,7 +842,7 @@ const StoryPage = () => {
               Trabalhar em equipe para transformar a vontade de comer em uma experiência agradável, sendo diferenciado pela qualidade, atendimento, inovação e produtividade.
             </p>
           </div>
-          
+
           {/* Visão */}
           <div className="bg-white/5 backdrop-blur-md p-8 rounded-3xl shadow-2xl border border-white/10 hover:border-white/40 transition-colors flex flex-col">
             <h3 className="text-2xl font-display font-bold mb-4 text-white">Nossa Visão</h3>
