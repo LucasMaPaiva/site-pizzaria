@@ -9,6 +9,14 @@ export interface Category {
   url: string;
 }
 
+export interface OpeningHours {
+  [key: string]: {
+    open: string;
+    close: string;
+    closed?: boolean;
+  };
+}
+
 export interface Unit {
   id: string;
   name: string;
@@ -18,5 +26,6 @@ export interface Unit {
   menuUrl: string;
   phone?: string;
   whatsapp?: string;
-  type: 'pizzaria' | 'gelateria';
+  type: 'pizzaria' | 'gelateria' | 'restaurante';
+  openingHours: OpeningHours;
 }

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ChevronRight, ChevronLeft, Clock, MapPin, Phone, ExternalLink, Navigation } from 'lucide-react';
 import { UNITS } from '../data/constants';
+import { getStatus } from '../utils/dateUtils';
 
 export const Units = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -75,9 +76,14 @@ export const Units = () => {
                 <div className="bg-white rounded-[2.5rem] overflow-hidden shadow-xl shadow-ink/5 border border-ink/5 h-full flex flex-col">
                   <div className="h-64 relative">
                     <img src={unit.image} alt={unit.name} className="w-full h-full object-cover" />
-                    <div className="absolute top-6 right-6 glass px-4 py-2 rounded-full flex items-center gap-2 text-sm font-bold">
-                      <Clock className="w-4 h-4 text-primary" /> Aberto até as 23h
-                    </div>
+                    {(() => {
+                      const status = getStatus(unit);
+                      return (
+                        <div className={`absolute top-6 right-6 glass px-4 py-2 rounded-full flex items-center gap-2 text-sm font-bold ${status.isOpen ? 'text-ink' : 'text-red-600'}`}>
+                          <Clock className={`w-4 h-4 ${status.isOpen ? 'text-primary' : 'text-red-500'}`} /> {status.message}
+                        </div>
+                      );
+                    })()}
                   </div>
                   <div className="p-8 md:p-10 flex-grow flex flex-col">
                     <h3 className="text-xl md:text-2xl font-display font-bold mb-4" style={{ color: '#000' }}>{unit.name}</h3>

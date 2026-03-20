@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pizza, Coffee, IceCream, Croissant } from 'lucide-react';
-import { Category, Unit } from '../types';
+import { Category, Unit, OpeningHours } from '../types';
 
 export const CATEGORIES: Category[] = [
   {
@@ -37,6 +37,46 @@ export const CATEGORIES: Category[] = [
   },
 ];
 
+const PIZZARIA_HOURS: OpeningHours = {
+  seg: { open: '17:30', close: '23:00' },
+  ter: { open: '17:30', close: '23:00' },
+  qua: { open: '17:30', close: '23:00' },
+  qui: { open: '17:30', close: '23:00' },
+  sex: { open: '17:30', close: '23:00' },
+  sab: { open: '17:30', close: '23:00' },
+  dom: { open: '17:30', close: '23:00' },
+};
+
+const RESTAURANTE_HOURS: OpeningHours = {
+  seg: { open: '11:15', close: '14:15' },
+  ter: { open: '11:00', close: '14:15' },
+  qua: { open: '11:00', close: '14:15' },
+  qui: { open: '11:00', close: '14:15' },
+  sex: { open: '11:00', close: '14:15' },
+  sab: { open: '11:00', close: '14:15' },
+  dom: { open: '11:00', close: '15:15', closed: true },
+};
+
+const GELATERIA_AEROPORTO_HOURS: OpeningHours = {
+  seg: { open: '11:30', close: '23:00' },
+  ter: { open: '11:30', close: '23:00' },
+  qua: { open: '11:30', close: '23:00' },
+  qui: { open: '11:30', close: '23:00' },
+  sex: { open: '11:30', close: '23:00' },
+  sab: { open: '11:30', close: '23:30' },
+  dom: { open: '12:00', close: '23:00' },
+};
+
+const GELATERIA_APARECIDA_HOURS: OpeningHours = {
+  seg: { open: '12:30', close: '23:15' },
+  ter: { open: '12:30', close: '23:15' },
+  qua: { open: '12:30', close: '23:15' },
+  qui: { open: '12:30', close: '23:15' },
+  sex: { open: '12:30', close: '23:15' },
+  sab: { open: '12:30', close: '23:15' },
+  dom: { open: '12:30', close: '23:15' },
+};
+
 export const UNITS: Unit[] = [
   {
     id: 'pizzaria-aeroporto',
@@ -47,7 +87,19 @@ export const UNITS: Unit[] = [
     menuUrl: 'https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa',
     phone: '(95) 3621-8600',
     whatsapp: '(95) 9152-0290',
-    type: 'pizzaria'
+    type: 'pizzaria',
+    openingHours: PIZZARIA_HOURS
+  }, {
+    id: 'restaurante-aeroporto',
+    name: 'Restaurante Dois90 Aeroporto',
+    address: 'R. Yeyê Coelho, 580A - Aeroporto, Boa Vista - RR, 69310-118',
+    image: '/units/aeroporto-pizzaria.jpeg',
+    mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR',
+    menuUrl: 'https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa',
+    phone: '(95) 3621-8600',
+    whatsapp: '(95) 9152-0290',
+    type: 'restaurante',
+    openingHours: RESTAURANTE_HOURS
   },
   {
     id: 'pizzaria-cacari',
@@ -58,7 +110,8 @@ export const UNITS: Unit[] = [
     menuUrl: 'https://pigz.com.br/dois90pizzaria',
     phone: '(95) 3621-8600',
     whatsapp: '(95) 3621-8600',
-    type: 'pizzaria'
+    type: 'pizzaria',
+    openingHours: PIZZARIA_HOURS
   },
   {
     id: 'gelateria-aeroporto',
@@ -68,7 +121,8 @@ export const UNITS: Unit[] = [
     mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR',
     menuUrl: 'https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa',
     whatsapp: '(95) 99150-0290',
-    type: 'gelateria'
+    type: 'gelateria',
+    openingHours: GELATERIA_AEROPORTO_HOURS
   },
   {
     id: 'gelateria-aparecida',
@@ -78,7 +132,8 @@ export const UNITS: Unit[] = [
     mapsUrl: 'https://www.google.com/maps?client=firefox-b-d&lei=Q5-8abSzFYeTwbkPqZewiA0&cs=0&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KcU6ImccBpONMZNxyDUymG74&daddr=R.+Jos%C3%A9+Bonif%C3%A1cio,+504+-+Aparecida,+Boa+Vista+-+RR,+69306-275',
     menuUrl: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d',
     whatsapp: '(95) 98112-6473',
-    type: 'gelateria'
+    type: 'gelateria',
+    openingHours: GELATERIA_APARECIDA_HOURS
   }
 ];
 
