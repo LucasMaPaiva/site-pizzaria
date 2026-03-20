@@ -18,10 +18,10 @@ export const DriveThru = () => {
             className="relative aspect-video rounded-[2rem] overflow-hidden shadow-2xl bg-black group border-4 border-white/10"
           >
             {/* YouTube Video */}
-            <iframe 
-              src="https://www.youtube.com/embed/VnsfYxbgFl4?autoplay=1&mute=1&loop=1&playlist=VnsfYxbgFl4" 
+            <iframe
+              src="https://www.youtube.com/embed/VnsfYxbgFl4?autoplay=1&mute=1&loop=1&playlist=VnsfYxbgFl4"
               title="Drive-Thru Dois90"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
               allowFullScreen
               className="w-full h-full border-0"
             />
@@ -45,19 +45,19 @@ export const DriveThru = () => {
             </p>
 
             <div className="flex flex-col sm:flex-row items-center gap-6">
-              <a 
-                href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR" 
-                target="_blank" 
+              <a
+                href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR"
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-accent px-10 py-5 rounded-full font-bold text-lg hover:bg-white/90 transition-all shadow-xl shadow-black/10 group active:scale-95"
               >
                 Como Chegar
                 <MapPin className="w-5 h-5 group-hover:translate-y-[-2px] transition-transform" />
               </a>
-              
+
               <div className="flex items-center gap-3 px-6 py-3 border border-white/30 rounded-full backdrop-blur-sm bg-white/5">
                 <div className="w-2.5 h-2.5 bg-white rounded-full animate-pulse shadow-[0_0_8px_rgba(255,255,255,0.8)]" />
-                <span className="text-sm font-bold uppercase tracking-widest text-white/90">Nova unidade disponível este mês</span>
+                <span className="text-sm font-bold uppercase tracking-widest text-white/90">Nova unidade disponível em breve</span>
               </div>
             </div>
           </motion.div>
