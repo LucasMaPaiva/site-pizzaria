@@ -12,14 +12,14 @@ export const About = () => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+            <div className="absolute top-3 left-3 md:top-6 md:left-6 w-full h-full bg-accent rounded-3xl" />
+            <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl relative bg-white">
               <img
                 src="/about-1.jpeg"
                 alt="Ambiente Dois90"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-accent rounded-3xl -z-10 hidden lg:block" />
             <div className="absolute top-1/2 -left-10 glass p-8 rounded-2xl shadow-xl hidden lg:block max-w-[200px]">
               <p className="text-primary font-display font-bold text-4xl mb-1">25+</p>
               <p className="text-xs font-bold uppercase tracking-widest opacity-60">Anos de história e paixão pela gastronomia.</p>

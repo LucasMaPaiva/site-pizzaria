@@ -19,12 +19,18 @@ export default function App() {
 
   useEffect(() => {
     const handleHashChange = () => {
-      setHash(window.location.hash);
-      window.scrollTo(0, 0);
+      const newHash = window.location.hash;
+      const oldHash = hash;
+      setHash(newHash);
+      
+      // Só reseta o scroll se estiver entrando ou saindo da página #historia
+      if (newHash === '#historia' || oldHash === '#historia') {
+        window.scrollTo(0, 0);
+      }
     };
     window.addEventListener('hashchange', handleHashChange);
     return () => window.removeEventListener('hashchange', handleHashChange);
-  }, []);
+  }, [hash]);
 
   if (hash === '#historia') {
     return (

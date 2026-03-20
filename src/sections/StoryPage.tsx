@@ -2,8 +2,20 @@ import { ChevronLeft } from 'lucide-react';
 
 export const StoryPage = () => {
   return (
-    <div className="pt-32 pb-24 bg-ink min-h-screen">
-      <div className="max-w-4xl mx-auto px-6">
+    <div className="pt-32 pb-24 bg-ink min-h-screen relative overflow-hidden">
+      {/* Background Decorations */}
+      {/* Background Image */}
+      <div className="absolute inset-0 z-0 select-none">
+        <img 
+          src="/story-page.png" 
+          alt="" 
+          className="w-full h-full object-cover opacity-20 grayscale brightness-50" 
+        />
+        {/* Grain Texture Overly */}
+        <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')] mix-blend-overlay" />
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10">
         <a href="#" className="inline-flex items-center gap-2 text-white/50 hover:text-primary transition-colors font-bold uppercase tracking-widest text-xs mb-12">
           <ChevronLeft className="w-4 h-4" /> Voltar para o início
         </a>
