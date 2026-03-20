@@ -20,7 +20,9 @@ import {
   X,
   ExternalLink,
   Clock,
-  Navigation
+  Navigation,
+  Send,
+  MessageCircle
 } from 'lucide-react';
 
 /// --- Types ---
@@ -50,28 +52,28 @@ const CATEGORIES: Category[] = [
     id: 'pizza',
     title: 'Pizzaria',
     icon: <Pizza className="w-6 h-6" />,
-    image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop',
+    image: '/public/secao-2/pizza.jpeg',
     description: 'Massas de fermentação natural e ingredientes selecionados.'
   },
   {
     id: 'coffee',
     title: 'Cafeteria',
     icon: <Coffee className="w-6 h-6" />,
-    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?q=80&w=2070&auto=format&fit=crop',
+    image: '/public/secao-2/doce.png',
     description: 'Grãos especiais, métodos artesanais e acompanhamentos únicos.'
   },
   {
     id: 'gelato',
     title: 'Gelateria',
     icon: <IceCream className="w-6 h-6" />,
-    image: 'https://images.unsplash.com/photo-1501443762994-82bd5dabb892?q=80&w=2070&auto=format&fit=crop',
+    image: '/public/secao-2/gelato.jpeg',
     description: 'Gelatos italianos feitos diariamente com frutas frescas.'
   },
   {
     id: 'bakery',
     title: 'Salgados & Padaria',
     icon: <Croissant className="w-6 h-6" />,
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=2072&auto=format&fit=crop',
+    image: '/public/secao-2/salgados.jpeg',
     description: 'Pães artesanais, croissants e salgados assados na hora.'
   }
 ];
@@ -80,10 +82,10 @@ const UNITS: Unit[] = [
   {
     id: 'pizzaria-aeroporto',
     name: 'Pizzaria Dois90 Aeroporto',
-    address: 'Bairro Aeroporto, Boa Vista - RR (Endereço Fictício)',
-    image: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop',
-    mapsUrl: 'https://maps.google.com',
-    menuUrl: 'https://ifood.com.br',
+    address: 'R. Yeyê Coelho, 580A - Aeroporto, Boa Vista - RR, 69310-118',
+    image: '/public/unidades/aeroporto-pizzaria.jpeg',
+    mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR',
+    menuUrl: 'https://pedido.anota.ai/',
     phone: '(95) 3621-8600',
     whatsapp: '(95) 9152-0290',
     type: 'pizzaria'
@@ -91,10 +93,10 @@ const UNITS: Unit[] = [
   {
     id: 'pizzaria-cacari',
     name: 'Pizzaria Dois90 Caçari',
-    address: 'Bairro Caçari, Boa Vista - RR (Endereço Fictício)',
-    image: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop',
-    mapsUrl: 'https://maps.google.com',
-    menuUrl: 'https://ifood.com.br',
+    address: 'Av. Ville Roy, 2155 - Terreo - Caçari, Boa Vista - RR, 69307-725',
+    image: '/public/unidades/cacari.jpeg',
+    mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//Dois90%2BPizzaria%2BCa%25C3%25A7ari%2B-%2BAv.%2BVille%2BRoy,%2B2155%2B-%2BTerreo%2B-%2BCa%25C3%25A7ari,%2BBoa%2BVista%2B-%2BRR,%2B69307-725/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d930899c9b5cac5:0xf9103c15ad8a4b12%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIKBAL&usg=AOvVaw1O_qnLqrqPclp07II2W8UB',
+    menuUrl: 'https://pigz.com.br/dois90pizzaria',
     phone: '(95) 3621-8600',
     whatsapp: '(95) 3621-8600',
     type: 'pizzaria'
@@ -102,21 +104,21 @@ const UNITS: Unit[] = [
   {
     id: 'gelateria-aeroporto',
     name: 'Gelateria Dois90 Aeroporto',
-    address: 'Bairro Aeroporto, Boa Vista - RR (Endereço Fictício)',
-    image: 'https://images.unsplash.com/photo-1501443762994-82bd5dabb892?q=80&w=2070&auto=format&fit=crop',
-    mapsUrl: 'https://maps.google.com',
-    menuUrl: 'https://ifood.com.br',
+    address: 'R. Yeyê Coelho, 580A - Aeroporto, Boa Vista - RR, 69310-118',
+    image: '/public/unidades/aeroporto-gelateria.jpeg',
+    mapsUrl: 'https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR',
+    menuUrl: 'https://pedido.anota.ai/',
     whatsapp: '(95) 99150-0290',
     type: 'gelateria'
   },
   {
     id: 'gelateria-aparecida',
     name: 'Gelateria Dois90 Aparecida',
-    address: 'Bairro Aparecida, Boa Vista - RR (Endereço Fictício)',
-    image: 'https://images.unsplash.com/photo-1552332386-f8dd00dc2f85?q=80&w=2071&auto=format&fit=crop',
-    mapsUrl: 'https://maps.google.com',
-    menuUrl: 'https://ifood.com.br',
-    whatsapp: '(95) 8112-6473',
+    address: 'Gelatos dois90, R. José Bonifácio, 504 - Aparecida, Boa Vista - RR, 69306-275',
+    image: '/public/unidades/aparecida.jpeg',
+    mapsUrl: 'https://www.google.com/maps?client=firefox-b-d&lei=Q5-8abSzFYeTwbkPqZewiA0&cs=0&um=1&ie=UTF-8&fb=1&gl=br&sa=X&geocode=KcU6ImccBpONMZNxyDUymG74&daddr=R.+Jos%C3%A9+Bonif%C3%A1cio,+504+-+Aparecida,+Boa+Vista+-+RR,+69306-275',
+    menuUrl: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d',
+    whatsapp: '(95) 98112-6473',
     type: 'gelateria'
   }
 ];
@@ -146,8 +148,7 @@ const Navbar = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'glass py-3' : 'bg-transparent py-6'}`}>
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-display font-bold text-xl">290</div>
-          <span className={`font-display font-bold text-xl tracking-tight ${isScrolled ? 'text-ink' : 'text-white'}`}>Dois90</span>
+          <img src="/logo.svg" alt="Dois90" className="h-10 w-auto" />
         </div>
 
         {/* Desktop Menu */}
@@ -199,7 +200,7 @@ const Hero = () => {
       {/* Background Image with Parallax-like feel */}
       <div className="absolute inset-0 z-0">
         <img
-          src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=2070&auto=format&fit=crop"
+          src="/hero-bg.jpeg"
           alt="Pizza Background"
           className="w-full h-full object-cover scale-105"
         />
@@ -215,9 +216,9 @@ const Hero = () => {
           <span className="inline-block px-4 py-1 rounded-full border border-white/30 text-xs font-bold uppercase tracking-[0.3em] mb-6 backdrop-blur-sm">
             Desde 1998 • Tradição & Sabor
           </span>
-          <h1 className="text-5xl md:text-8xl font-display font-bold mb-6 leading-[1.1] text-balance">
-            Dois90. <br />
-            <span className="text-primary italic font-serif font-normal">Uma experiência.</span>
+          <h1 className="text-5xl md:text-8xl font-display font-bold mb-6 leading-[1.1] text-balance flex flex-col items-center gap-4">
+            <img src="/logo.svg" alt="Dois90" className="h-24 md:h-40 w-auto" />
+            <span className="text-white italic font-serif font-normal text-3xl md:text-5xl">25 anos com você.</span>
           </h1>
           <p className="text-lg md:text-xl text-white/80 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
             Sabores artesanais, café especial, gelatos italianos e momentos únicos em um ambiente feito para você.
@@ -268,7 +269,7 @@ const About = () => {
           >
             <div className="aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?q=80&w=1974&auto=format&fit=crop"
+                src="/secao-1.jpeg"
                 alt="Ambiente Dois90"
                 className="w-full h-full object-cover"
               />
@@ -446,24 +447,24 @@ const Units = () => {
                     </div>
                   </div>
                   <div className="p-8 md:p-10 flex-grow flex flex-col">
-                    <h3 className="text-xl md:text-2xl font-display font-bold mb-4">{unit.name}</h3>
+                    <h3 className="text-xl md:text-2xl font-display font-bold mb-4" style={{ color: '#000' }}>{unit.name}</h3>
                     <div className="flex flex-col gap-3 mb-8 flex-grow">
-                      <div className="flex items-start gap-3 text-ink/60">
+                      <div className="flex items-start gap-3" style={{ color: 'rgba(0,0,0,0.6)' }}>
                         <MapPin className="w-5 h-5 text-primary shrink-0 mt-1" />
-                        <p className="text-sm md:text-base">{unit.address}</p>
+                        <p className="text-sm md:text-base" style={{ color: 'rgba(0,0,0,0.6)' }}>{unit.address}</p>
                       </div>
                       {unit.phone && (
-                        <div className="flex items-center gap-3 text-ink/60">
+                        <div className="flex items-center gap-3" style={{ color: 'rgba(0,0,0,0.6)' }}>
                           <Phone className="w-5 h-5 text-primary shrink-0" />
-                          <p className="text-sm md:text-base">Central: {unit.phone}</p>
+                          <p className="text-sm md:text-base" style={{ color: 'rgba(0,0,0,0.6)' }}>Central: {unit.phone}</p>
                         </div>
                       )}
                       {unit.whatsapp && (
-                        <div className="flex items-center gap-3 text-ink/60">
+                        <div className="flex items-center gap-3" style={{ color: 'rgba(0,0,0,0.6)' }}>
                           <div className="w-5 h-5 flex items-center justify-center bg-green-500 rounded-full text-white shrink-0">
                             <Phone className="w-3 h-3" />
                           </div>
-                          <p className="text-sm md:text-base">WhatsApp: {unit.whatsapp}</p>
+                          <p className="text-sm md:text-base" style={{ color: 'rgba(0,0,0,0.6)' }}>WhatsApp: {unit.whatsapp}</p>
                         </div>
                       )}
                     </div>
@@ -515,7 +516,12 @@ const Gallery = () => {
     <section className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 mb-12 flex items-center justify-between">
         <h2 className="text-3xl font-display font-bold">Siga nosso ritmo</h2>
-        <a href="#" className="text-primary font-bold flex items-center gap-2 hover:underline">
+        <a
+          href="https://www.instagram.com/dois90pizzaria/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-primary font-bold flex items-center gap-2 hover:underline"
+        >
           @dois90_oficial <Instagram className="w-5 h-5" />
         </a>
       </div>
@@ -596,8 +602,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-12 mb-16">
           <div className="col-span-2">
             <div className="flex items-center gap-2 mb-6">
-              <div className="w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white font-display font-bold text-xl">290</div>
-              <span className="font-display font-bold text-2xl tracking-tight">Dois90</span>
+              <img src="/logo.svg" alt="Dois90" className="h-12 w-auto brightness-0 invert" />
             </div>
             <p className="text-white/50 max-w-sm leading-relaxed">
               Uma experiência gastronômica completa. Da pizza artesanal ao café especial, celebramos os bons momentos da vida com sabor e qualidade.
@@ -639,6 +644,159 @@ const Footer = () => {
   );
 };
 
+const WhatsAppWidget = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [message, setMessage] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+
+  const whatsappNumber = '559591520290'; // Pizzaria Aeroporto
+
+  const handleSend = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!message.trim()) return;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+    setMessage('');
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    if (isOpen) {
+      setIsTyping(true);
+      const timer = setTimeout(() => setIsTyping(false), 2000);
+      return () => clearTimeout(timer);
+    }
+  }, [isOpen]);
+
+  return (
+    <div className="fixed bottom-6 right-6 z-[100] flex flex-col items-end gap-2">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, y: 20, transformOrigin: 'bottom right' }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            className="w-[350px] max-w-[calc(100vw-3rem)] bg-white rounded-3xl overflow-hidden shadow-2xl border border-ink/5 mb-4"
+          >
+            {/* Header */}
+            <div className="bg-[#25D366] p-6 text-white text-left">
+              <div className="flex items-center gap-4">
+                <div className="relative">
+                  <div className="w-12 h-12 bg-white rounded-full flex items-center justify-center overflow-hidden border-2 border-white/20">
+                    <img
+                      src="/milla.png"
+                      alt="Mila - Assistente Virtual"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <div className="absolute bottom-0 right-0 w-3 h-3 bg-green-400 border-2 border-white rounded-full"></div>
+                </div>
+                <div>
+                  <h4 className="font-bold text-lg">Mila</h4>
+                  <p className="text-xs text-white/80 text-left">Assistente Virtual Dois90</p>
+                </div>
+                <button
+                  onClick={() => setIsOpen(false)}
+                  className="ml-auto hover:bg-black/10 p-2 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5 text-left" />
+                </button>
+              </div>
+            </div>
+
+            {/* Chat Area */}
+            <div className="h-64 p-6 bg-[#E5DDD5] relative overflow-hidden flex flex-col justify-end gap-4 bg-[url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png')] bg-repeat bg-center">
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                className="bg-white p-4 rounded-2xl rounded-tl-none shadow-sm max-w-[85%] text-left"
+              >
+                <p className="text-sm text-ink font-medium mb-1 text-left">Mila:</p>
+                <p className="text-sm text-ink text-left">
+                  Olá! 👋 Eu sou a Mila. Como posso ajudar você hoje? <br />
+                  Peça sua pizza, reserve uma mesa ou tire suas dúvidas!
+                </p>
+                <span className="text-[10px] text-ink/40 mt-1 block text-right">
+                  {new Date().getHours()}:{new Date().getMinutes().toString().padStart(2, '0')}
+                </span>
+              </motion.div>
+
+              {isTyping && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="bg-white/50 backdrop-blur-sm px-3 py-1 rounded-full w-fit flex gap-1 items-center"
+                >
+                  <span className="w-1.5 h-1.5 bg-ink/30 rounded-full animate-bounce"></span>
+                  <span className="w-1.5 h-1.5 bg-ink/30 rounded-full animate-bounce [animation-delay:0.2s]"></span>
+                  <span className="w-1.5 h-1.5 bg-ink/30 rounded-full animate-bounce [animation-delay:0.4s]"></span>
+                </motion.div>
+              )}
+            </div>
+
+            {/* Input Area */}
+            <div className="p-4 bg-white">
+              <form onSubmit={handleSend} className="flex gap-2 items-center">
+                <input
+                  type="text"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  placeholder="Digite sua mensagem..."
+                  className="flex-1 bg-base border-none rounded-2xl px-4 py-3 text-sm focus:ring-2 focus:ring-[#25D366] transition-all"
+                />
+                <button
+                  type="submit"
+                  disabled={!message.trim()}
+                  className="w-11 h-11 bg-[#25D366] text-white rounded-full flex items-center justify-center hover:bg-[#128C7E] transition-all shadow-md active:scale-95 disabled:opacity-50 disabled:scale-100"
+                >
+                  <Send className="w-5 h-5 ml-0.5" />
+                </button>
+              </form>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <div className="flex items-center gap-3">
+        <AnimatePresence>
+          {!isOpen && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              className="bg-white px-4 py-2 rounded-2xl shadow-xl border border-ink/5"
+            >
+              <p className="text-sm font-bold text-ink">Fale com a Mila</p>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        <motion.button
+          onClick={() => setIsOpen(!isOpen)}
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          className={`rounded-full flex items-center justify-center shadow-2xl transition-all duration-500 overflow-hidden ${
+            isOpen ? 'w-16 h-16 bg-ink text-white rotate-90' : 'w-24 h-24 bg-transparent'
+          }`}
+        >
+          {isOpen ? <X className="w-8 h-8" /> : (
+            <div className="relative w-full h-full">
+              <img
+                src="/milla.png"
+                alt="Mila"
+                className="w-full h-full object-cover rounded-full"
+              />
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-[#25D366] rounded-full animate-pulse"></span>
+            </div>
+          )}
+        </motion.button>
+      </div>
+    </div>
+  );
+};
+
 export default function App() {
   return (
     <div className="min-h-screen">
@@ -650,6 +808,7 @@ export default function App() {
       <Gallery />
       <Contact />
       <Footer />
+      <WhatsAppWidget />
     </div>
   );
 }
