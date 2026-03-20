@@ -12,11 +12,11 @@ export const CATEGORIES: Category[] = [
     url: 'https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa'
   },
   {
-    id: 'coffee',
-    title: 'Cafeteria',
-    icon: React.createElement(Coffee, { className: "w-6 h-6" }),
-    image: '/categories/dessert.png',
-    description: 'Grãos especiais, métodos artesanais e acompanhamentos únicos.',
+    id: 'restaurant',
+    title: 'Restaurante',
+    icon: React.createElement(Croissant, { className: "w-6 h-6" }),
+    image: '/gallery/lunch.png',
+    description: 'Almoço executivo com pratos variados e ingredientes frescos',
     url: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d'
   },
   {
@@ -28,13 +28,13 @@ export const CATEGORIES: Category[] = [
     url: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d'
   },
   {
-    id: 'bakery',
-    title: 'Salgados & Padaria',
-    icon: React.createElement(Croissant, { className: "w-6 h-6" }),
-    image: '/categories/savory.jpeg',
-    description: 'Pães artesanais, croissants e salgados assados na hora.',
+    id: 'coffee',
+    title: 'Cafeteria',
+    icon: React.createElement(Coffee, { className: "w-6 h-6" }),
+    image: '/categories/dessert.png',
+    description: 'Grãos especiais, métodos artesanais e acompanhamentos únicos.',
     url: 'https://www.ifood.com.br/delivery/boa-vista-rr/gelateria-dois-90---aparecida-nossa-senhora-aparecida/45eb126d-1641-4d56-a1fb-7acbbb0b1f2d'
-  }
+  },
 ];
 
 export const UNITS: Unit[] = [
@@ -82,7 +82,16 @@ export const UNITS: Unit[] = [
   }
 ];
 
-export const GALLERY = [
+export const GALLERY_PIZZA = [
+  '/gallery/pizza.png',
+  '/gallery/interior.png',
+  '/gallery/lunch.png',
+  '/gallery/pasta.jpeg',
+  '/gallery/bread.png',
+  '/gallery/acai.png'
+];
+
+export const GALLERY_GELATO = [
   '/gallery/pizza.png',
   '/gallery/interior.png',
   '/gallery/lunch.png',

@@ -117,16 +117,21 @@ export const WhatsAppWidget = () => {
         )}
       </AnimatePresence>
 
-      <div className="flex items-center gap-3">
+      <div className="relative flex items-center">
         <AnimatePresence>
           {!isOpen && (
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: 20 }}
-              className="bg-white px-4 py-2 rounded-2xl shadow-xl border border-ink/5"
+              initial={{ opacity: 0, x: 20, scale: 0.8 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: 20, scale: 0.8 }}
+              className="absolute right-full bottom-[65%] mr-[-20px] cursor-pointer z-10"
+              onClick={() => setIsOpen(true)}
             >
-              <p className="text-sm font-bold text-ink">Fale com a Mila</p>
+              <img
+                src="/caixa-de-texto.png"
+                alt="Mensagem da Milla"
+                className="w-[155px] max-w-[70vw] drop-shadow-[0_20px_40px_rgba(0,0,0,0.2)] transition-transform hover:scale-105 active:scale-95"
+              />
             </motion.div>
           )}
         </AnimatePresence>
@@ -135,7 +140,7 @@ export const WhatsAppWidget = () => {
           onClick={() => setIsOpen(!isOpen)}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className={`rounded-full flex items-center justify-center transition-all duration-500 ${isOpen ? 'w-16 h-16 bg-ink text-white rotate-90 shadow-2xl' : 'w-24 h-24 bg-transparent'
+          className={`rounded-full flex items-center justify-center transition-all duration-500 ${isOpen ? 'w-16 h-16 bg-ink text-white rotate-90 shadow-2xl mr-4' : 'w-32 h-32 bg-transparent'
             }`}
         >
           {isOpen ? <X className="w-8 h-8" /> : (
@@ -145,7 +150,7 @@ export const WhatsAppWidget = () => {
                 alt="Mila"
                 className="w-full h-full object-cover drop-shadow-[0_15px_15px_rgba(0,0,0,0.4)]"
               />
-              <span className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 border-2 border-[#25D366] rounded-full animate-pulse"></span>
+              <span className="absolute top-4 right-4 w-5 h-5 bg-red-500 border-2 border-white rounded-full animate-pulse shadow-lg"></span>
             </div>
           )}
         </motion.button>

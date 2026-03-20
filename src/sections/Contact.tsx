@@ -1,5 +1,5 @@
 import { Instagram, ArrowRight } from 'lucide-react';
-import { GALLERY } from '../data/constants';
+import { GALLERY_PIZZA } from '../data/constants';
 
 export const Contact = () => {
   return (
@@ -14,7 +14,7 @@ export const Contact = () => {
             {/* Left Side: Image Grid */}
             <div className="flex-1 w-full order-2 lg:order-1">
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
-                {GALLERY.slice(0, 6).map((img, index) => (
+                {GALLERY_PIZZA.slice(0, 6).map((img, index) => (
                   <div 
                     key={index} 
                     className="aspect-square rounded-2xl overflow-hidden shadow-lg group relative"
@@ -35,13 +35,13 @@ export const Contact = () => {
             {/* Right Side: Typography & CTA */}
             <div className="lg:w-1/3 text-center lg:text-left order-1 lg:order-2">
               <span className="inline-block px-4 py-1 rounded-full bg-white/10 text-xs font-bold uppercase tracking-[0.2em] mb-6 backdrop-blur-sm border border-white/10">
-                | Instagram
+                | Social
               </span>
               <h2 className="text-4xl md:text-5xl font-display mb-2 leading-tight">
-                Confira nosso
+                Confira nossas
               </h2>
               <p className="text-7xl md:text-9xl font-authentic text-white mb-8 block -mt-2">
-                feed
+                redes
               </p>
               
               <a 
@@ -50,7 +50,7 @@ export const Contact = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-white text-accent px-8 py-4 rounded-full font-bold text-lg hover:bg-white/90 transition-all shadow-xl shadow-black/10 group active:scale-95"
               >
-                Seguir no Instagram
+                Confira nossas redes sociais
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </a>
             </div>

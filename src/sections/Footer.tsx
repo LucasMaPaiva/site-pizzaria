@@ -27,7 +27,12 @@ export const Footer = () => {
           <div>
             <h4 className="font-bold mb-6 uppercase tracking-widest text-sm text-primary">Redes Sociais</h4>
             <div className="flex gap-4">
-              <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-ink transition-all">
+              <a 
+                href="https://www.instagram.com/dois90_oficial" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-ink transition-all"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
               <a href="#" className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-ink transition-all">
@@ -40,8 +45,8 @@ export const Footer = () => {
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-white/40 text-sm">
           <p>© 2026 Dois90 Experiência Gastronômica. Todos os direitos reservados.</p>
           <div className="flex gap-8">
-            <a href="#" className="hover:text-white transition-colors">Privacidade</a>
-            <a href="#" className="hover:text-white transition-colors">Termos de Uso</a>
+            <a href="#privacidade" className="hover:text-white transition-colors">Privacidade</a>
+            <a href="#termos" className="hover:text-white transition-colors">Termos de Uso</a>
           </div>
         </div>
       </div>

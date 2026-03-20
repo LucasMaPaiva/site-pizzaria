@@ -1,6 +1,10 @@
+import { useEffect } from 'react';
 import { ChevronLeft } from 'lucide-react';
 
 export const StoryPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="pt-32 pb-24 bg-ink min-h-screen relative overflow-hidden">
       {/* Background Decorations */}

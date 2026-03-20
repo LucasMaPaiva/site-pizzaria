@@ -25,9 +25,14 @@ export const Navbar = () => {
           <a href="#categorias" className="hover:text-primary transition-colors">Cardápio</a>
           <a href="#unidades" className="hover:text-primary transition-colors">Unidades</a>
           <a href="#contato" className="hover:text-primary transition-colors">Contato</a>
-          <button className="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-all shadow-lg shadow-primary/20">
+          <a 
+            href="https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-all shadow-lg shadow-primary/20"
+          >
             Delivery
-          </button>
+          </a>
         </div>
 
         {/* Mobile Toggle */}
@@ -53,7 +58,14 @@ export const Navbar = () => {
               <a href="#categorias" onClick={() => setIsMobileMenuOpen(false)}>Cardápio</a>
               <a href="#unidades" onClick={() => setIsMobileMenuOpen(false)}>Unidades</a>
               <a href="#contato" onClick={() => setIsMobileMenuOpen(false)}>Contato</a>
-              <button className="bg-primary text-white py-4 rounded-2xl mt-4">Pedir Agora</button>
+              <a 
+                href="https://pedido.anota.ai/loja/pizzaria-e-gelateria-dois90-aeroporto?f=msa" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="bg-primary text-white py-4 rounded-2xl mt-4 text-center"
+              >
+                Pedir Agora
+              </a>
             </div>
           </motion.div>
         )}
