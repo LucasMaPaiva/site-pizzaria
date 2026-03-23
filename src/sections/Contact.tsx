@@ -1,5 +1,6 @@
 import { Instagram, ArrowRight } from 'lucide-react';
 import { GALLERY_PIZZA } from '../data/constants';
+import { siteConfig } from '../config';
 
 export const Contact = () => {
   return (
@@ -40,12 +41,12 @@ export const Contact = () => {
               <h2 className="text-4xl md:text-5xl font-display mb-2 leading-tight">
                 Confira nossas
               </h2>
-              <p className="text-7xl md:text-9xl font-authentic text-white mb-8 block -mt-2">
+              <p className="text-7xl md:text-9xl font-serif italic text-white mb-8 block -mt-2">
                 redes
               </p>
               
               <a 
-                href="https://www.instagram.com/dois90_oficial" 
+                href={siteConfig.links.instagram} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-white text-accent px-8 py-4 rounded-full font-bold text-lg hover:bg-white/90 transition-all shadow-xl shadow-black/10 group active:scale-95"

@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, X } from 'lucide-react';
+import { siteConfig } from '../config';
 
 export const WhatsAppWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [message, setMessage] = useState('');
   const [isTyping, setIsTyping] = useState(false);
 
-  const whatsappNumber = '559591520290'; // Pizzaria Aeroporto
+  const whatsappNumber = siteConfig.contact.whatsapp.aeroportoFull;
 
   const handleSend = (e?: React.FormEvent) => {
     if (e) e.preventDefault();

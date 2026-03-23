@@ -1,7 +1,10 @@
 import { motion } from 'motion/react';
-import { MapPin, Play } from 'lucide-react';
+import { MapPin } from 'lucide-react';
+import { UNITS } from '../data/constants';
 
 export const DriveThru = () => {
+  const aeroportoUnit = UNITS.find(u => u.id === 'pizzaria-aeroporto');
+
   return (
     <section id="drive-thru" className="py-24 bg-accent text-white overflow-hidden relative">
       {/* Decorative patterns */}
@@ -46,7 +49,7 @@ export const DriveThru = () => {
 
             <div className="flex flex-col sm:flex-row items-center gap-6">
               <a
-                href="https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=/maps/dir//pizzaria%2Bdois90%2B-%2BR.%2BYey%25C3%25AA%2BCoelho,%2B580A%2B-%2BAeroporto,%2BBoa%2BVista%2B-%2BRR,%2B69310-118/data%3D!4m6!4m5!1m1!4e2!1m2!1m1!1s0x8d9305848658b945:0x8393b0a06729d2c8%3Fsa%3DX%26ved%3D1t:57443%26ictx%3D111&ved=2ahUKEwiMsaOUpK2TAxXtRTABHUkrEoAQ48ADegQIJxAL&usg=AOvVaw0rSb-m9PFFWjy0ZBHM6TKR"
+                href={aeroportoUnit?.mapsUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-white text-accent px-10 py-5 rounded-full font-bold text-lg hover:bg-white/90 transition-all shadow-xl shadow-black/10 group active:scale-95"

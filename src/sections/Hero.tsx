@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { ChevronRight } from 'lucide-react';
+import { siteConfig } from '../config';
 
 export const Hero = () => {
   return (
@@ -21,7 +22,7 @@ export const Hero = () => {
           transition={{ duration: 0.8 }}
         >
           <span className="inline-block px-4 py-1 rounded-full border border-white/30 text-xs font-bold uppercase tracking-[0.3em] mb-6 backdrop-blur-sm">
-            Desde 2000 • Tradição & Sabor
+            Desde {siteConfig.since} • Tradição & Sabor
           </span>
           <h1 className="text-5xl md:text-8xl font-display mb-6 leading-[1.1] text-balance flex flex-col items-center gap-4">
             <img src="/logo.svg" alt="Dois90" className="h-24 md:h-40 w-auto" />

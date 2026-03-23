@@ -1,7 +1,11 @@
 import { motion } from 'motion/react';
 import { Pizza, Coffee, ChevronRight } from 'lucide-react';
+import { siteConfig } from '../config';
 
 export const About = () => {
+  const currentYear = new Date().getFullYear();
+  const yearsOfHistory = currentYear - parseInt(siteConfig.since);
+
   return (
     <section id="sobre" className="py-24 bg-base overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
@@ -21,7 +25,7 @@ export const About = () => {
               />
             </div>
             <div className="absolute top-1/2 -left-10 glass p-8 rounded-2xl shadow-xl hidden lg:block max-w-[200px]">
-              <p className="text-primary font-display font-bold text-4xl mb-1">25+</p>
+              <p className="text-primary font-display font-bold text-4xl mb-1">{yearsOfHistory}+</p>
               <p className="text-xs font-bold uppercase tracking-widest opacity-60">Anos de história e paixão pela gastronomia.</p>
             </div>
           </motion.div>
