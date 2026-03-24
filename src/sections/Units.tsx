@@ -64,7 +64,17 @@ export const Units = () => {
 
         <div className="relative overflow-visible">
           <motion.div
-            className="flex gap-8"
+            className="flex gap-8 cursor-grab active:cursor-grabbing"
+            drag="x"
+            dragConstraints={{ left: 0, right: 0 }}
+            onDragEnd={(_e, { offset, velocity }) => {
+              const swipeThreshold = 50;
+              if (offset.x < -swipeThreshold || velocity.x < -500) {
+                next();
+              } else if (offset.x > swipeThreshold || velocity.x > 500) {
+                prev();
+              }
+            }}
             animate={{ x: `calc(-${currentIndex} * (100% + 2rem))` }}
             transition={{ type: "spring", stiffness: 200, damping: 25 }}
           >
